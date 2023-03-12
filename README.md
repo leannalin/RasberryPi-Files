@@ -1,2 +1,2 @@
 # RasberryPi-Files
-Python script for an oil detecting boat for our PApi competition
+Python script for an oil detecting boat for our PAPi competition
