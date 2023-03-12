@@ -32,6 +32,7 @@ def main():
         print("uv sensor test start")
 while True:
     uv = veml.uv_index
+    veml = adafruit_veml6075.VEML6075(i2c, integration_time=100)
     print("UV index:", veml.uv_index)
     time.sleep(1)
     
