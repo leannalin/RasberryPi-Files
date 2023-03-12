@@ -2,11 +2,32 @@
 <html>
     <head>
         <title>UV light sensor</title>
+        <style media="screen">
+      div {
+        height: 120px;
+        width: 500px;
+        background-image: linear-gradient(90deg, #F5D11C 5.66%, #87a587 52%, #4363FF 94.35%);
+      }
+
+      progress {
+        height:40px;
+        width: 500px;
+
+      }
+    </style>
+
 
 </head>
 <body>
+    <script>function timedRefresh(timeoutPeriod) {
+    setTimeout("location.reload(true);",timeoutPeriod);
+    }
+
+    window.onload = timedRefresh(2000);
+  </script>
+   
   
-    <progress max="100" value=></progress>
+    <progress max="100" value={{ uv }}></progress>
 
 </body>
 </html>
