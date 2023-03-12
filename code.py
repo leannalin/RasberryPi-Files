@@ -8,10 +8,6 @@ from time import sleep
 from flask import Flask, render_template
 app = Flask(__name__)
 
-# setting up Flask app to display the data of sensor  
-@app.route('/')
-def index():
-
 # Init 
 in1 = 11
 in2 = 12
@@ -32,9 +28,20 @@ print('Motor starting')
 i2c = busio.I2C(board.SCL, board.SDA)
 
 # Sensor collecting data 
+def main():
+        print("uv sensor test start")
 while True:
+    uv = veml.uv_index
     print("UV index:", veml.uv_index)
     time.sleep(1)
+    
+# setting up Flask app to display the data of sensor  
+@app.route('/')
+def index():
+    while True:
+    print("UV index:", veml.uv_index)
+    time.sleep(1) 
+    return str(uv)
 
 #test using 'python3 ~/uvsensor.py'  
     
