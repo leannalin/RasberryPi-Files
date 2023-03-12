@@ -1,16 +1,24 @@
-# Import GPIO library, modules for time, access to sensor 
+# Import GPIO library, modules for time, access to sensor, flask app
 import RPi.GPIO as GPIO
 import time
 import board
 import busio
 import adafruit_veml6075
 from time import sleep 
+from flask import Flask, render_template
+app = Flask(__name__)
+
+# setting up Flask app to display the data of sensor  
+@app.route('/')
+def index():
 
 # Init 
 in1 = 11
 in2 = 12
 in3 = 15
 in4 = 16
+en1 = 17 
+en2 = 18 
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
@@ -25,7 +33,7 @@ i2c = busio.I2C(board.SCL, board.SDA)
 
 # Sensor collecting data 
 while True:
-    print(veml.uv_index)
+    print("UV index:", veml.uv_index)
     time.sleep(1)
 
 #test using 'python3 ~/uvsensor.py'  
@@ -75,7 +83,9 @@ print("turning")
     GPIO.output(in3, False)
     GPIO.output(in3, False)
     quit()
-       
+   
+
+    
       
       
       
