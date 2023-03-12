@@ -41,7 +41,7 @@ def index():
     while True:
     print("UV index:", veml.uv_index)
     time.sleep(1) 
-    return str(uv)
+    return render_template('index.html',uv=uv )
 
 #test using 'python3 ~/uvsensor.py'  
     
