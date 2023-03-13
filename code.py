@@ -46,53 +46,69 @@ def index():
 
 #test using 'python3 ~/uvsensor.py'  
     
-# Starting the motor 
-while True: 
-    print("boat starting")
-    print("forward")
+# Starting the motor and setting if statement for when oil is detected, motors turn off and dispersent is activated 
+if veml.uv_index > 5
+        while True: 
+            print("boat starting")
+            print("forward")
 
-    try:
-    
-        GPIO.output(in1,GPIO.HIGH)
-        GPIO.output(in2,GPIO.LOW)
-        GPIO.output(in3,GPIO.HIGH)
-        GPIO.output(in4,GPIO.LOW)
-        time.sleep(5)
-        
-print("turning")
-        
-         GPIO.output(in1,GPIO.HIGH)
-         GPIO.output(in2,GPIO.LOW)
-         GPIO.output(in3,GPIO.LOW)
-         GPIO.output(in4,GPIO.HIGH)
-         time.sleep(2)
-        
- print("forward")   
+            try:
 
-        GPIO.output(in1,GPIO.HIGH)
-        GPIO.output(in2,GPIO.LOW)
-        GPIO.output(in3,GPIO.HIGH)
-        GPIO.output(in4,GPIO.LOW)
-        time.sleep(5)
-        
- print("turning")
+                GPIO.output(in1,GPIO.HIGH)
+                GPIO.output(in2,GPIO.LOW)
+                GPIO.output(in3,GPIO.HIGH)
+                GPIO.output(in4,GPIO.LOW)
+                time.sleep(5)
 
-         GPIO.output(in1,GPIO.HIGH)
-         GPIO.output(in2,GPIO.LOW)
-         GPIO.output(in3,GPIO.LOW)
-         GPIO.output(in4,GPIO.HIGH)
-         time.sleep(2)
-        
-         except(KeyboardInterrupt):
-    # If keyboard interrupt is detected then it exits cleanly!
-    print('Done!')
-    GPIO.output(in1, False)
-    GPIO.output(in2, False)
-    GPIO.output(in3, False)
-    GPIO.output(in3, False)
-    quit()
-   
+        print("turning")
 
+                 GPIO.output(in1,GPIO.HIGH)
+                 GPIO.output(in2,GPIO.LOW)
+                 GPIO.output(in3,GPIO.LOW)
+                 GPIO.output(in4,GPIO.HIGH)
+                 time.sleep(2)
+
+         print("forward")   
+
+                GPIO.output(in1,GPIO.HIGH)
+                GPIO.output(in2,GPIO.LOW)
+                GPIO.output(in3,GPIO.HIGH)
+                GPIO.output(in4,GPIO.LOW)
+                time.sleep(5)
+
+         print("turning")
+
+                 GPIO.output(in1,GPIO.HIGH)
+                 GPIO.output(in2,GPIO.LOW)
+                 GPIO.output(in3,GPIO.LOW)
+                 GPIO.output(in4,GPIO.HIGH)
+                 time.sleep(2)
+
+                 except(KeyboardInterrupt):
+            # If keyboard interrupt is detected then it exits cleanly!
+            print('Done!')
+                GPIO.output(in1, False)
+                GPIO.output(in2, False)
+                GPIO.output(in3, False)
+                GPIO.output(in3, False)
+                quit()
+
+else: 
+        print('stopping')
+        
+                 GPIO.output(in1,GPIO.LOW)
+                 GPIO.output(in2,GPIO.LOW)
+                 GPIO.output(in3,GPIO.LOW)
+                 GPIO.output(in4,GPIO.LOW)
+                 time.sleep(5)
+                
+                print('dispersing')
+                
+                 GPIO.output(en1,GPIO.HIGH)
+                 GPIO.output(en2,GPIO.LOW)
+                
+        
+            
     
       
       
