@@ -102,6 +102,8 @@ else:
                  GPIO.output(in4,GPIO.LOW)
                  time.sleep(5)
                 
+#Triggering motor for dispersant 
+
                 print('dispersing')
                 
                  GPIO.output(en1,GPIO.HIGH)
