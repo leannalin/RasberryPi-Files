@@ -3,7 +3,7 @@ import RPi.GPIO as GPIO
 import time
 import board
 import busio
-import adafruit_veml6075
+import adafruit_ltr390
 from time import sleep 
 from flask import Flask, render_template
 app = Flask(__name__)
@@ -31,23 +31,21 @@ i2c = busio.I2C(board.SCL, board.SDA)
 def main():
         print("uv sensor test start")
 while True:
-    uv = veml.uv_index
-    veml = adafruit_veml6075.VEML6075(i2c, integration_time=100)
-    print("UV index:", veml.uv_index)
-    time.sleep(1)
+    print("UV index:", ltr.uvi)
+    time.sleep(0.5)
     
 # setting up Flask app to display the data of sensor  
 @app.route('/')
 def index():
-    while True:
-    print("UV index:", veml.uv_index)
-    time.sleep(1) 
-    return render_template('index.html',uv=uv )
+        while True: 
+    print("UV index:", ltr.uvi)
+    time.sleep(0.5)
+    return render_template('index.html', ltr.uvi)
 
 #test using 'python3 ~/uvsensor.py'  
     
 # Starting the motor and setting if statement for when oil is detected, motors turn off and dispersent is activated 
-if veml.uv_index > 5
+if ltr.uvi > 5
         while True: 
             print("boat starting")
             print("forward")
