@@ -31,16 +31,16 @@ i2c = busio.I2C(board.SCL, board.SDA)
 def main():
         print("uv sensor test start")
 while True:
-    print("UV index:", ltr.uvi)
+    print("UV index:", ltr.uvs)
     time.sleep(0.5)
     
 # setting up Flask app to display the data of sensor  
 @app.route('/')
 def index():
         while True: 
-    print("UV index:", ltr.uvi)
+    print("UV index:", ltr.uvs)
     time.sleep(0.5)
-    return render_template('index.html', ltr.uvi)
+    return render_template('index.html', ltr.uvs)
 
 #test using 'python3 ~/uvsensor.py'  
     
