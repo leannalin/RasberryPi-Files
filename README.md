@@ -16,8 +16,4 @@ Run this command in the terminal to install the Flask app
 ```
 sudo apt install python3-flask 
 ```
-Run these commands to set up: 
-```
-set FLASK_APP=code.py
-flask run
-```
+
