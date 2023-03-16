@@ -22,6 +22,8 @@ GPIO.setup(in1, GPIO.OUT)
 GPIO.setup(in2, GPIO.OUT)
 GPIO.setup(in3, GPIO.OUT)
 GPIO.setup(in4, GPIO.OUT)
+GPIO.setup(en1, GPIO.OUT)
+GPIO.setup(en2, GPIO.OUT)
 print('Motor starting')
 
 # Setting up I2C bus 
