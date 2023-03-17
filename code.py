@@ -29,6 +29,8 @@ print('Motor starting')
 # Setting up I2C bus 
 i2c = busio.I2C(board.SCL, board.SDA)
 
+ltr = adafruit_ltr390.LTR390(i2c)
+
 # Sensor collecting data 
 def main():
         print("uv sensor test start")
