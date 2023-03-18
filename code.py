@@ -9,12 +9,12 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 # Init 
-in1 = 11
-in2 = 12
-in3 = 15
-in4 = 16
-en1 = 17 
-en2 = 18 
+en1 = 12 
+en2 = 13 
+in1 = 17
+in2 = 18
+in3 = 22
+in4 = 23
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
