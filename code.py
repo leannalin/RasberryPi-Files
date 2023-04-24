@@ -62,15 +62,14 @@ if ltr.uvi > 5
                 GPIO.output(in4,GPIO.LOW)
                 time.sleep(5)
                 
-         print("turning") 
-
+        print("turning")
                  GPIO.output(in1,GPIO.HIGH)
                  GPIO.output(in2,GPIO.LOW)
                  GPIO.output(in3,GPIO.LOW)
                  GPIO.output(in4,GPIO.HIGH)
                  time.sleep(2)
-
-         print("forward")   
+                        
+        print("forward")   
 
                 GPIO.output(in1,GPIO.HIGH)
                 GPIO.output(in2,GPIO.LOW)
@@ -78,7 +77,7 @@ if ltr.uvi > 5
                 GPIO.output(in4,GPIO.LOW)
                 time.sleep(5)
                 
-         print("turning") 
+        print("turning") 
 
                  GPIO.output(in1,GPIO.HIGH)
                  GPIO.output(in2,GPIO.LOW)
@@ -96,7 +95,7 @@ if ltr.uvi > 5
                 quit()
 
 else: 
-        print('stopping')
+        print("stopping")
         
                  GPIO.output(in1,GPIO.LOW)
                  GPIO.output(in2,GPIO.LOW)
@@ -106,7 +105,7 @@ else:
                 
 #Triggering motor for dispersant 
 
-                print('dispersing')
+        print("dispersing")
                 
                  GPIO.output(en1,GPIO.HIGH)
                  GPIO.output(en2,GPIO.LOW)
