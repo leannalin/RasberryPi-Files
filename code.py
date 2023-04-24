@@ -35,8 +35,8 @@ ltr = adafruit_ltr390.LTR390(i2c)
 def main():
         print("uv sensor test start")
 while True:
-    print("UV index:", ltr.uvs)
-    time.sleep(0.5)
+  print("UV index:", ltr.uvs)
+  time.sleep(0.5)
     
 # setting up Flask app to display the data of sensor  
 @app.route('/')
@@ -49,66 +49,65 @@ def index():
 #test using 'python3 ~/uvsensor.py'  
     
 # Starting the motor and setting if statement for when oil is detected, motors turn off and dispersent is activated 
-if ltr.uvi > 5
-        while True: 
-            print("boat starting")
-            print("forward")
-                
-                try:
 
-                GPIO.output(in1,GPIO.HIGH)
-                GPIO.output(in2,GPIO.LOW)
-                GPIO.output(in3,GPIO.HIGH)
-                GPIO.output(in4,GPIO.LOW)
-                time.sleep(5)
-                
-        print("turning")
-                 GPIO.output(in1,GPIO.HIGH)
-                 GPIO.output(in2,GPIO.LOW)
-                 GPIO.output(in3,GPIO.LOW)
-                 GPIO.output(in4,GPIO.HIGH)
-                 time.sleep(2)
-                        
-        print("forward")   
+count = 0
+while count < 3: 
+  if ltr.uvi < 5:
+    count = count+1
+  if ltr.uvi >= 5:
+    print("boat starting")
+    print("forward")
+    try:
+      GPIO.output(in1,GPIO.HIGH)
+      GPIO.output(in2,GPIO.LOW)
+      GPIO.output(in3,GPIO.HIGH)
+      GPIO.output(in4,GPIO.LOW)
+      time.sleep(5)
+      
+      print("turning")
+      GPIO.output(in1,GPIO.HIGH)
+      GPIO.output(in2,GPIO.LOW)
+      GPIO.output(in3,GPIO.LOW)
+      GPIO.output(in4,GPIO.HIGH)
+      time.sleep(2)
+      
+      print("forward")   
+      GPIO.output(in1,GPIO.HIGH)
+      GPIO.output(in2,GPIO.LOW)
+      GPIO.output(in3,GPIO.HIGH)
+      GPIO.output(in4,GPIO.LOW)
+      time.sleep(5)
+      
+      print("turning") 
+      GPIO.output(in1,GPIO.HIGH)
+      GPIO.output(in2,GPIO.LOW)
+      GPIO.output(in3,GPIO.LOW)
+      GPIO.output(in4,GPIO.HIGH)
+      time.sleep(2)
+      
+      count = 0
+    #Sets the count back to 0 so that it will count values less than 5 unconsecutively
+    
+    except(KeyboardInterrupt):
+    # If keyboard interrupt is detected then it exits cleanly!
+      print('Done!')
+      GPIO.output(in1, False)
+      GPIO.output(in2, False)
+      GPIO.output(in3, False)
+      GPIO.output(in3, False)
+      quit()
 
-                GPIO.output(in1,GPIO.HIGH)
-                GPIO.output(in2,GPIO.LOW)
-                GPIO.output(in3,GPIO.HIGH)
-                GPIO.output(in4,GPIO.LOW)
-                time.sleep(5)
-                
-        print("turning") 
-
-                 GPIO.output(in1,GPIO.HIGH)
-                 GPIO.output(in2,GPIO.LOW)
-                 GPIO.output(in3,GPIO.LOW)
-                 GPIO.output(in4,GPIO.HIGH)
-                 time.sleep(2)
-
-                 except(KeyboardInterrupt):
-            # If keyboard interrupt is detected then it exits cleanly!
-            print('Done!')
-                GPIO.output(in1, False)
-                GPIO.output(in2, False)
-                GPIO.output(in3, False)
-                GPIO.output(in3, False)
-                quit()
-
-else: 
-        print("stopping")
-        
-                 GPIO.output(in1,GPIO.LOW)
-                 GPIO.output(in2,GPIO.LOW)
-                 GPIO.output(in3,GPIO.LOW)
-                 GPIO.output(in4,GPIO.LOW)
-                 time.sleep(5)
+if count = 3:
+  print("stopping")
+  GPIO.output(in1,GPIO.LOW)
+  GPIO.output(in2,GPIO.LOW)
+  GPIO.output(in3,GPIO.LOW)
+  GPIO.output(in4,GPIO.LOW)
+  time.sleep(5)
                 
 #Triggering motor for dispersant 
 
-        print("dispersing")
+  print("dispersing")
+  GPIO.output(en1,GPIO.HIGH)
+  GPIO.output(en2,GPIO.LOW)
                 
-                 GPIO.output(en1,GPIO.HIGH)
-                 GPIO.output(en2,GPIO.LOW)
-                
-        
-       
