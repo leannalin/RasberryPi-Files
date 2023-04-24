@@ -51,51 +51,58 @@ def index():
 # Starting the motor and setting if statement for when oil is detected, motors turn off and dispersent is activated 
 
 count = 0
-while count < 3: 
-  if ltr.uvi < 5:
-    count = count+1
-  if ltr.uvi >= 5:
-    print("boat starting")
-    print("forward")
-    try:
-      GPIO.output(in1,GPIO.HIGH)
-      GPIO.output(in2,GPIO.LOW)
-      GPIO.output(in3,GPIO.HIGH)
-      GPIO.output(in4,GPIO.LOW)
-      time.sleep(5)
-      
-      print("turning")
-      GPIO.output(in1,GPIO.HIGH)
-      GPIO.output(in2,GPIO.LOW)
-      GPIO.output(in3,GPIO.LOW)
-      GPIO.output(in4,GPIO.HIGH)
-      time.sleep(2)
-      
-      print("forward")   
-      GPIO.output(in1,GPIO.HIGH)
-      GPIO.output(in2,GPIO.LOW)
-      GPIO.output(in3,GPIO.HIGH)
-      GPIO.output(in4,GPIO.LOW)
-      time.sleep(5)
-      
-      print("turning") 
-      GPIO.output(in1,GPIO.HIGH)
-      GPIO.output(in2,GPIO.LOW)
-      GPIO.output(in3,GPIO.LOW)
-      GPIO.output(in4,GPIO.HIGH)
-      time.sleep(2)
-      
-      count = 0
-    #Sets the count back to 0 so that it will count values less than 5 unconsecutively
-    
-    except(KeyboardInterrupt):
-    # If keyboard interrupt is detected then it exits cleanly!
-      print('Done!')
-      GPIO.output(in1, False)
-      GPIO.output(in2, False)
-      GPIO.output(in3, False)
-      GPIO.output(in3, False)
-      quit()
+def moving(count,en1,en2,in1,in2,in3,in4,ltr.uvs):
+    while count < 3: 
+      if ltr.uvs < 5:
+        count = count+1
+      if ltr.uvs >= 5:
+        print("boat starting")
+        print("forward")
+        try:
+          GPIO.output(in1,GPIO.HIGH)
+          GPIO.output(in2,GPIO.LOW)
+          GPIO.output(in3,GPIO.HIGH)
+          GPIO.output(in4,GPIO.LOW)
+          time.sleep(5)
+          
+          print("turning")
+          GPIO.output(in1,GPIO.HIGH)
+          GPIO.output(in2,GPIO.LOW)
+          GPIO.output(in3,GPIO.LOW)
+          GPIO.output(in4,GPIO.HIGH)
+          time.sleep(2)
+          
+          print("forward")   
+          GPIO.output(in1,GPIO.HIGH)
+          GPIO.output(in2,GPIO.LOW)
+          GPIO.output(in3,GPIO.HIGH)
+          GPIO.output(in4,GPIO.LOW)
+          time.sleep(5)
+          
+          print("turning") 
+          GPIO.output(in1,GPIO.HIGH)
+          GPIO.output(in2,GPIO.LOW)
+          GPIO.output(in3,GPIO.LOW)
+          GPIO.output(in4,GPIO.HIGH)
+          time.sleep(2)
+          
+          count = 0
+  return(count)
+        #Sets the count back to 0 so that it will count values less than 5 unconsecutively
+        
+        except(KeyboardInterrupt):
+        # If keyboard interrupt is detected then it exits cleanly!
+          print('Done!')
+          GPIO.output(in1, False)
+          GPIO.output(in2, False)
+          GPIO.output(in3, False)
+          GPIO.output(in3, False)
+          quit()
+
+
+count = moving() #calling sub routine for the first time to start the loop
+
+
 
 if count = 3:
   print("stopping")
@@ -110,4 +117,9 @@ if count = 3:
   print("dispersing")
   GPIO.output(en1,GPIO.HIGH)
   GPIO.output(en2,GPIO.LOW)
+  
+  count = 0
+  count = moving()
                 
+        
+       
