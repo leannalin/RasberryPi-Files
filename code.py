@@ -61,8 +61,8 @@ if ltr.uvi > 5
                 GPIO.output(in3,GPIO.HIGH)
                 GPIO.output(in4,GPIO.LOW)
                 time.sleep(5)
-
-        print("turning")
+                
+         print("turning")
 
                  GPIO.output(in1,GPIO.HIGH)
                  GPIO.output(in2,GPIO.LOW)
