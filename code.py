@@ -41,7 +41,7 @@ while True:
 # setting up Flask app to display the data of sensor  
 @app.route('/')
 def index():
-        while True: 
+  while True: 
     print("UV index:", ltr.uvs)
     time.sleep(0.5)
     return render_template('index.html', ltr.uvs)
@@ -51,7 +51,7 @@ def index():
 # Starting the motor and setting if statement for when oil is detected, motors turn off and dispersent is activated 
 
 count = 0
-def moving(count,en1,en2,in1,in2,in3,in4,ltr.uvs):
+def moving(count,en1,en2,in1,in2,in3,in4):
     while count < 3: 
       if ltr.uvs < 5:
         count = count+1
@@ -89,7 +89,6 @@ def moving(count,en1,en2,in1,in2,in3,in4,ltr.uvs):
           count = 0
   return(count)
         #Sets the count back to 0 so that it will count values less than 5 unconsecutively
-        
         except(KeyboardInterrupt):
         # If keyboard interrupt is detected then it exits cleanly!
           print('Done!')
