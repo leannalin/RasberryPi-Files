@@ -53,8 +53,8 @@ if ltr.uvi > 5
         while True: 
             print("boat starting")
             print("forward")
-
-            try:
+                
+                try:
 
                 GPIO.output(in1,GPIO.HIGH)
                 GPIO.output(in2,GPIO.LOW)
@@ -77,7 +77,7 @@ if ltr.uvi > 5
                 GPIO.output(in3,GPIO.HIGH)
                 GPIO.output(in4,GPIO.LOW)
                 time.sleep(5)
-
+                
          print("turning")
 
                  GPIO.output(in1,GPIO.HIGH)
