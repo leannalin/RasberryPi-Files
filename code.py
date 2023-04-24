@@ -33,10 +33,10 @@ ltr = adafruit_ltr390.LTR390(i2c)
 
 # Sensor collecting data 
 def main():
-        print("uv sensor test start")
-while True:
-  print("UV index:", ltr.uvs)
-  time.sleep(0.5)
+  print("uv sensor test start")
+  while True:
+    print("UV index:", ltr.uvs)
+    time.sleep(0.5)
     
 # setting up Flask app to display the data of sensor  
 @app.route('/')
@@ -52,73 +52,74 @@ def index():
 
 count = 0
 def moving(count,en1,en2,in1,in2,in3,in4):
-    while count < 3: 
-      if ltr.uvs < 5:
-        count = count+1
-      if ltr.uvs >= 5:
-        print("boat starting")
-        print("forward")
-        try:
-          GPIO.output(in1,GPIO.HIGH)
-          GPIO.output(in2,GPIO.LOW)
-          GPIO.output(in3,GPIO.HIGH)
-          GPIO.output(in4,GPIO.LOW)
-          time.sleep(5)
+  while count < 3: 
+    if ltr.uvs < 5:
+      count = count+1
+    if ltr.uvs >= 5:
+      print("boat starting")
+      print("forward")
+      GPIO.output(in1,GPIO.HIGH)
+      GPIO.output(in2,GPIO.LOW)
+      GPIO.output(in3,GPIO.HIGH)
+      GPIO.output(in4,GPIO.LOW)
+      time.sleep(5)
           
-          print("turning")
-          GPIO.output(in1,GPIO.HIGH)
-          GPIO.output(in2,GPIO.LOW)
-          GPIO.output(in3,GPIO.LOW)
-          GPIO.output(in4,GPIO.HIGH)
-          time.sleep(2)
+      print("turning")
+      GPIO.output(in1,GPIO.HIGH)
+      GPIO.output(in2,GPIO.LOW)
+      GPIO.output(in3,GPIO.LOW)
+      GPIO.output(in4,GPIO.HIGH)
+      time.sleep(2)
           
-          print("forward")   
-          GPIO.output(in1,GPIO.HIGH)
-          GPIO.output(in2,GPIO.LOW)
-          GPIO.output(in3,GPIO.HIGH)
-          GPIO.output(in4,GPIO.LOW)
-          time.sleep(5)
+      print("forward")   
+      GPIO.output(in1,GPIO.HIGH)
+      GPIO.output(in2,GPIO.LOW)
+      GPIO.output(in3,GPIO.HIGH)
+      GPIO.output(in4,GPIO.LOW)
+      time.sleep(5)
           
-          print("turning") 
-          GPIO.output(in1,GPIO.HIGH)
-          GPIO.output(in2,GPIO.LOW)
-          GPIO.output(in3,GPIO.LOW)
-          GPIO.output(in4,GPIO.HIGH)
-          time.sleep(2)
-          
-          count = 0
-  return(count)
-        #Sets the count back to 0 so that it will count values less than 5 unconsecutively
-        except(KeyboardInterrupt):
-        # If keyboard interrupt is detected then it exits cleanly!
-          print('Done!')
-          GPIO.output(in1, False)
-          GPIO.output(in2, False)
-          GPIO.output(in3, False)
-          GPIO.output(in3, False)
-          quit()
-
-
-count = moving() #calling sub routine for the first time to start the loop
-
-
-
-if count = 3:
-  print("stopping")
-  GPIO.output(in1,GPIO.LOW)
-  GPIO.output(in2,GPIO.LOW)
-  GPIO.output(in3,GPIO.LOW)
-  GPIO.output(in4,GPIO.LOW)
-  time.sleep(5)
-                
-#Triggering motor for dispersant 
-
-  print("dispersing")
-  GPIO.output(en1,GPIO.HIGH)
-  GPIO.output(en2,GPIO.LOW)
-  
-  count = 0
-  count = moving()
-                
+      print("turning") 
+      GPIO.output(in1,GPIO.HIGH)
+      GPIO.output(in2,GPIO.LOW)
+      GPIO.output(in3,GPIO.LOW)
+      GPIO.output(in4,GPIO.HIGH)        
+      time.sleep(2)
         
-       
+      count = 0
+        #Sets the count back to 0 so that it will count values less than 5 unconsecutively
+  return(count)
+
+def whenlessthan5(count, in1, in2, in3, in4):
+  if count == 3:
+    print("stopping")
+    GPIO.output(in1,GPIO.LOW)
+    GPIO.output(in2,GPIO.LOW)
+    GPIO.output(in3,GPIO.LOW)
+    GPIO.output(in4,GPIO.LOW)
+    time.sleep(5)
+  
+    print("dispersing")
+    GPIO.output(en1,GPIO.HIGH)
+    GPIO.output(en2,GPIO.LOW)
+    
+    count = 0
+    count = moving()
+
+
+#main program
+index()
+main()
+
+try:
+  count = moving(count,en1,en2,in1,in2,in3,in4) #calling subroutine for the first time to start the loop
+  whenlessthan5(count, in1, in2, in3, in4)
+                
+#Triggering motor for dispersant       
+except:
+        # If keyboard interrupt is detected then it exits cleanly!
+  print("Done!")
+  GPIO.output(in1, False)
+  GPIO.output(in2, False)
+  GPIO.output(in3, False)
+  GPIO.output(in3, False)
+  quit()
